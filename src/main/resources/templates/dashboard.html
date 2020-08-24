@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0">
+<th:block th:insert="fragments/resources-css" />
+</head>
+
+<body>
+	<div class="main-wrapper">
+		<!-- Header -->
+		<th:block th:insert="fragments/header" />
+		<!-- Sidebar -->
+		<th:block th:insert="fragments/sidebar" />
+		<!-- Content -->
+		<th:block th:insert="fragments/content" />
+	</div>
+	<div class="sidebar-overlay" data-reff=""></div>
+	<th:block th:insert="fragments/resources-js" />
+
+
+</body>
+
+
+
+</html>

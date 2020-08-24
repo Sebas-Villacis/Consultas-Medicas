@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0">
+<th:block th:insert="fragments/resources-css" />
+</head>
+
+<body>
+	<div class="main-wrapper">
+		<!-- Header -->
+		<th:block th:insert="fragments/header" />
+		<!-- Sidebar -->
+		<th:block th:insert="fragments/sidebar" />
+		<!-- Content -->
+		<div class="page-wrapper">
+			<div class="content">
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2">
+						<h4 class="page-title">Add Doctor</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2">
+						<form th:action="@{/doctor/registrar}" th:method="post"
+							th:object="${newDoctor}">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>First Name <span class="text-danger">*</span></label> <input
+											class="form-control" type="text" maxlength="50"
+											th:field="${newDoctor.firstname}" required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Last Name</label> <input class="form-control"
+											type="text" maxlength="50" th:field="${newDoctor.lastName}"
+											required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>DNI <span class="text-danger">*</span></label> <input
+											class="form-control" type="text" maxlength="9"
+											th:field="${newDoctor.dni}" required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>CMP <span class="text-danger">*</span></label> <input
+											class="form-control" type="text" maxlength="10"
+											th:field="${newDoctor.cmp}" required>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Specialty</label> <select class="select"
+											th:field="${newDoctor.specialty.id}">
+											<option th:each="specialty : ${specialtyList}"
+												th:value="${specialty.id}" th:text="${specialty.name}"></option>
+
+										</select>
+									</div>
+								</div>
+
+							</div>
+							<div class="button-wrapper">
+								<div class="m-t-20 text-center">
+									<button class="btn btn-primary submit-btn">Create
+										Doctor</button>
+									<button type="button" th:onclick="'goBack()'" class="btn btn-secondary btn-lg">Cancel</button>
+								</div>
+
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+			<script>
+				function goBack() {
+					window.history.back();
+				}
+			</script>
+		</div>
+	</div>
+	<div class="sidebar-overlay" data-reff=""></div>
+	<th:block th:insert="fragments/resources-js" />
+
+
+</body>
+
+
+
+</html>
